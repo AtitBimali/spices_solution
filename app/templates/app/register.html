@@ -1,0 +1,44 @@
+{% extends 'app/main.html'%}
+{% load static %}
+{% block content %}
+<br><br><br>
+<section class="py-7 py-md-0 bg-hero" id="home">
+    <div class="container">
+        <div class="row vh-md-100">
+            <div class="col-md-8 col-sm-10 col-12 mx-auto my-auto text-center">
+                <h2 class="heading-black text-capitalize">Register Below</h2>
+<form method="post" class="form-all"  enctype="multipart/form-data">
+    <!-- <div class="form-control d-inline-flex flex-row align-items-center"> -->
+       
+    {% csrf_token %}
+    <label class="h4" style="font-size: medium;" >Company Name:</label><br>
+    {{ register_form.company_name }}
+    <br>
+    <label class="h4" style="font-size: medium;">Owner Name:</label><br>
+    {{ register_form.owner_name }}
+    <br>
+    <label class="h4" style="font-size: medium;">Address:</label><br>
+    {{ register_form.address }}
+    <br>
+    <label class="h4" style="font-size: medium;">Email:</label><br>
+    {{ register_form.email }}
+    <br>
+    <label class="h4" style="font-size: medium;">Contact:</label><br>
+    {{ register_form.contact }}
+    <br>
+    <label class="h4" style="font-size: medium;">Industry Type:</label><br>
+    {{ register_form.industry_type }}
+    
+    
+  <br><br>
+<button class="btn btn-primary d-inline-flex flex-row align-items-center">
+    Submit
+    
+</button>
+</form>
+            </div>
+        </div>
+    </div>
+</section>
+
+{% endblock %}
