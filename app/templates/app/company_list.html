@@ -19,7 +19,13 @@
             </form>
         </div>
     </div>
-
+    <h2>Sort By</h2>
+    
+        {% for industry in industries%}
+        <li>
+        <a href="{% url 'companies' %}?industry={{industry.industry_type}}">{{industry.industry_type}}</a>
+    </li>
+    {% endfor %}
     {%if companies%}
     <div class="container">
         <div class="row mt-5">

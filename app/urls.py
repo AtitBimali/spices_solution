@@ -7,5 +7,5 @@ urlpatterns = [
     path('register/',views.register,name='register'),
     path('companies/',views.company_list,name='companies'),
     path('search/', views.search_view,name='search'),
-    path('companies/<slug:industry_type>', views.company_list, name='company_list'),
+    #path('companies/<slug:industry_type>', views.company_list, name='company_list'),
 ]

@@ -38,15 +38,15 @@ def register(request):
     }
     return render(request,'app/register.html',context=context)
 
-def company_list(request,industry_type=None):
-    category=None
+def company_list(request):
     company_list = Company.objects.all()
     industries = Industry.objects.all()
-    if industry_type:
-        category=get_object_or_404(Industry,industry_type=industry_type)
-        company_list = industries.filter(industry_type=category)
+    industry = request.GET.get('industry')
+    if industry == None:
+        company_list = Company.objects.all()
+    else:
+         company_list = Company.objects.filter(industry_type=industry)
     context={
-        'category':category,
         'industries':industries,
         'company_list':company_list
     }
