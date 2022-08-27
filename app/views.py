@@ -52,24 +52,11 @@ def company_list(request):
     }
     return render(request,'app/company_list.html',context=context)
 
-def category(request,industry_type):
-    company_list = Company.objects.all()
-    industries = Industry.objects.all()
-    if industry_type:
-        category=get_object_or_404(Industry,industry_type=industry_type)
-        industries = Industry.filter(industry_type=category)
-    context={
-        'category':category,
-        'industries':industries,
-        'company_list':company_list
-    }
-    return render(request,'app/company_list.html',context=context)
-
 def search_view(request):
-    print('hello')
     # whatever user write in search box we get in query
     query = request.GET['query']
     print("searched")
-    companies=Company.objects.filter(Q(company_name__icontains=query) | Q(owner_name__icontains=query) | Q(address__icontains=query))
-    word="Searched Result :"
-    return render(request,'app/company_list.html',{'companies':companies,'word':word,})
+    if query:
+        companies=Company.objects.filter(Q(company_name__icontains=query) | Q(owner_name__icontains=query) | Q(address__icontains=query))
+        word="Searched Result :"
+        return render(request,'app/company_list.html',{'companies':companies,'word':word,})

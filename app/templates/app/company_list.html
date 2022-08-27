@@ -4,14 +4,9 @@
 
 
 <section class="py-7 bg-dark section-angle top-left bottom-left">
-
-
     <div class="wrap">
-        
-          
-
         <div class="search">
-            <form method="get" action="../search" class="search">
+            <form method="get" action="../search" class="search" style="position:fixed;">
                 <input type="text" class="searchTerm" placeholder="Search Company" name="query">
                 <button type="submit" class="searchButton">
                     <i class="fa fa-search"></i>
@@ -19,19 +14,22 @@
             </form>
         </div>
     </div>
-    <h2>Sort By</h2>
+    <h3 style="margin-left:1%;">Industry Type:</h3>
     
         {% for industry in industries%}
         <li>
         <a href="{% url 'companies' %}?industry={{industry.industry_type}}">{{industry.industry_type}}</a>
     </li>
     {% endfor %}
-    {%if companies%}
-    <div class="container">
-        <div class="row mt-5">
-            <div class="col-md-4">
+    
 
-                {% for i in companies %}
+<div class="container">
+
+    <div class="row mt-5">
+
+        <div class="col-md-4">
+            {% if companies %}
+          {% for i in companies %}
 
                 <div class="card">
 
@@ -44,21 +42,9 @@
                         <p class="card-text">{{i.address}}</p>
                     </div>
 
-                </div>
-
-            </div>
+              </div>
             {% endfor %}
-        </div>
-
-    </div>
-</section>
-{%endif%}
-
-<div class="container">
-
-    <div class="row mt-5">
-
-        <div class="col-md-4">
+{% endif %}
             {% for i in company_list %}
             <div class="card">
 
@@ -78,5 +64,7 @@
     </div>
 
 </div>
+    </div>
+    
 </section>
 {% endblock %}
